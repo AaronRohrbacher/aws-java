@@ -58,6 +58,12 @@ functions:
       - http:
           path: /products
           method: get
+          integration: lambda
+          authorizer:
+            arn: arn:aws:cognito-idp:us-west-2:544012685056:userpool/us-west-2_yzjeGgJFl
+            claims:
+              - email
+
   getProduct:
     handler: com.serverless.GetProductHandler
     events:
