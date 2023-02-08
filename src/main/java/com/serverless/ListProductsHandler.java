@@ -12,6 +12,12 @@ import java.util.List;
 
 import com.serverless.dal.Product;
 
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
+import software.amazon.awssdk.services.cognitoidentityprovider.model.CognitoIdentityProviderException;
+import software.amazon.awssdk.services.cognitoidentityprovider.model.CreateUserPoolRequest;
+import software.amazon.awssdk.services.cognitoidentityprovider.model.CreateUserPoolResponse;
+
 public class ListProductsHandler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
 
 	private final Logger logger = Logger.getLogger(this.getClass());
@@ -23,11 +29,14 @@ public class ListProductsHandler implements RequestHandler<Map<String, Object>, 
         List<Product> products = new Product().list();
 
         // send the response back
-        return ApiGatewayResponse.builder()
-    				.setStatusCode(200)
-    				.setObjectBody(products)
-    				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
-    				.build();
+		return ApiGatewayResponse.builder()
+			.setStatusCode(statusCode: 200)
+			.CognitoIdentityProviderClient.builder().build();
+        // return ApiGatewayResponse.builder()
+    	// 			.setStatusCode(200)
+    	// 			.setObjectBody(products)
+    	// 			.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
+    	// 			.build();
     } catch (Exception ex) {
         logger.error("Error in listing products: " + ex);
 

@@ -60,6 +60,7 @@ functions:
           method: get
           integration: lambda
           authorizer:
+            name: authorizer
             arn: arn:aws:cognito-idp:us-west-2:544012685056:userpool/us-west-2_yzjeGgJFl
             claims:
               - email
