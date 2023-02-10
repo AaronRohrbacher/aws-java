@@ -83,6 +83,13 @@ functions:
       - http:
           path: /products/{id}
           method: delete
+  getUser:
+    handler: com.serverless.GetUserHandler
+    events:
+      - http:
+          path: /user/
+          method: get
+
 
 resources:
   Resources:

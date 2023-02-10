@@ -29,14 +29,11 @@ public class ListProductsHandler implements RequestHandler<Map<String, Object>, 
         List<Product> products = new Product().list();
 
         // send the response back
-		return ApiGatewayResponse.builder()
-			.setStatusCode(statusCode: 200)
-			.CognitoIdentityProviderClient.builder().build();
-        // return ApiGatewayResponse.builder()
-    	// 			.setStatusCode(200)
-    	// 			.setObjectBody(products)
-    	// 			.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
-    	// 			.build();
+        return ApiGatewayResponse.builder()
+    				.setStatusCode(200)
+    				.setObjectBody(products)
+    				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
+    				.build();
     } catch (Exception ex) {
         logger.error("Error in listing products: " + ex);
 
